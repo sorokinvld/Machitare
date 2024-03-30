@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "machitare"
+version = "0.1.0"
+description = "Machitare is an innovative agent creation framework designed to revolutionize the way agents are built and deployed."
+authors = ["SwiftyOS <craigswift13@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
