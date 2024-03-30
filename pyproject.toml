@@ -21,6 +21,9 @@ click = "^8.1.7"
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.4"
 
+[tool.ruff]
+line-length = 88
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
