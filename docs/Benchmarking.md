@@ -31,3 +31,47 @@ We will regularly run our agents through the GAIA benchmark and track their prog
 While the GAIA benchmark serves as an excellent starting point, we recognize the need to expand our benchmarking efforts to cover a wider range of tasks and domains. As Machitare evolves, we will continue to explore and incorporate additional benchmarks that align with our goals and help us push the boundaries of agent development.
 
 By maintaining a strong focus on benchmarking and continuous improvement, we aim to make Machitare the go-to framework for creating highly capable and versatile agents that can tackle real-world challenges with human-like proficiency.
+
+## Running the basic benchmark
+
+# Running the basic benchmark
+
+To run the basic benchmark, follow these steps:
+
+1. Download the GAIA data: 
+    - Visit [https://huggingface.co/spaces/gaia-benchmark/datasets](https://huggingface.co/spaces/gaia-benchmark/datasets)
+    - Download the necessary dataset files and save them to a local directory.
+
+2. Open a terminal and navigate to the directory where Machitare is installed.
+
+3. Run the benchmark script using Poetry:
+    ```bash
+    poetry run python machitare/bench.py --data-dir /path/to/gaia/data
+    ```
+    Replace `/path/to/gaia/data` with the actual path to the directory where you saved the GAIA dataset files.
+
+4. The benchmark will start running and display the progress and results in the terminal.
+
+Note: Make sure you have Poetry installed and the necessary dependencies for Machitare are installed in the virtual environment.
+
+After running the benchmark, you can analyze the results and evaluate the performance of Machitare's agents in real-world scenarios.
+
+# File types in the GAIA Benchmark:
+
+- .MOV
+- .csv
+- .docx
+- .jpg
+- .json
+- .jsonld
+- .m4a
+- .mp3
+- .pdb
+- .pdf
+- .png
+- .pptx
+- .py
+- .txt
+- .xlsx
+- .xml
+- .zip
