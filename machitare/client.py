@@ -1,6 +1,7 @@
 import asyncio
 import socket
-from .streaming_pb2 import StreamData, Event
+
+from .streaming_pb2 import Event, StreamData
 
 
 class Client:

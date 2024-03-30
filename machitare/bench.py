@@ -1,9 +1,10 @@
+import argparse
 import asyncio
 import json
 import os
-from openai import AsyncOpenAI
+
 from anthropic import AsyncAnthropic
-import argparse
+from openai import AsyncOpenAI
 
 # Semaphores for rate limiting
 openai_semaphore = asyncio.Semaphore(10)

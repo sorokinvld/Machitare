@@ -20,6 +20,7 @@ click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.3.4"
+isort = "^5.13.2"
 
 [tool.ruff]
 line-length = 88

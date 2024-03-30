@@ -1,6 +1,7 @@
-import click
-import threading
 import asyncio
+import threading
+
+import click
 
 
 @click.group()
