@@ -5,6 +5,8 @@ description = "Machitare is an innovative agent creation framework designed to r
 authors = ["SwiftyOS <craigswift13@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/Swiftyos/Machitare"
+
 
 [tool.poetry.dependencies]
 python = "^3.12"

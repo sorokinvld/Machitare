@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="./docs/logo.jpeg" alt="Logo" width="300">
+    <img src="https://raw.githubusercontent.com/Swiftyos/Machitare/main/docs/logo.jpeg" alt="Logo" width="300">
 </p>
 
 # Machitare: The Next Generation Agent Creation Framework
