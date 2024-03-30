@@ -15,14 +15,12 @@ anthropic_client = AsyncAnthropic(
     api_key=os.environ.get("ANTHROPIC_API_KEY"),
 )
 
-openai_client = AsyncOpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY")
-)
+openai_client = AsyncOpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 local_client = AsyncOpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
     base_url="http://localhost:1235/v1",
-    )
+)
 
 SYSTEM_PROMPT = """You are a general AI assistant. I will ask you a question. Report your thoughts, and finish your answer with the following template: FINAL ANSWER: [YOUR FINAL ANSWER].
 YOUR FINAL ANSWER should be a number OR as few words as possible OR a comma separated list of numbers and/or strings.
@@ -30,6 +28,7 @@ If you are asked for a number, don’t use comma to write your number neither us
 If you are asked for a string, don’t use articles, neither abbreviations (e.g. for cities), and write the digits in plain text unless specified otherwise.
 If you are asked for a comma separated list, apply the above rules depending of whether the element to be put in the list is a number or a string.
 """
+
 
 async def local_model(question, model):
     async with local_semaphore:
@@ -42,8 +41,9 @@ async def local_model(question, model):
         )
         return chat_completion.choices[0].message.content
 
+
 async def openai_model(question, model):
-    async with openai_semaphore: 
+    async with openai_semaphore:
         chat_completion = await openai_client.chat.completions.create(
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -53,16 +53,19 @@ async def openai_model(question, model):
         )
         return chat_completion.choices[0].message.content
 
+
 async def anthropic_model(question, model):
-    async with anthropic_semaphore: 
+    async with anthropic_semaphore:
         chat_completion = await anthropic_client.messages.create(
             max_tokens=1024,
             system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": [{"type": "text", "text": question}]}],
+            messages=[
+                {"role": "user", "content": [{"type": "text", "text": question}]}
+            ],
             model=model,
         )
         return chat_completion.content[0].text
-    
+
 
 async def process_line_async(line, ai_function, model_name):
     data = json.loads(line)
@@ -73,6 +76,7 @@ async def process_line_async(line, ai_function, model_name):
 
     is_correct = ai_answer.strip().lower() == final_answer.strip().lower()
     return is_correct
+
 
 async def evaluate_model_async(ai_function, model_name, file_path):
     results = []
@@ -91,9 +95,13 @@ async def evaluate_model_async(ai_function, model_name, file_path):
 
     return percentage_correct, correct_answers, total_questions
 
+
 async def compare_models_async(model_specs, file_path):
     model_performance = {}
-    tasks = [evaluate_model_async(ai_function, model_name, file_path) for ai_function, model_name in model_specs]
+    tasks = [
+        evaluate_model_async(ai_function, model_name, file_path)
+        for ai_function, model_name in model_specs
+    ]
     results = await asyncio.gather(*tasks)
 
     for (ai_function, model_name), ans in zip(model_specs, results):
@@ -102,8 +110,11 @@ async def compare_models_async(model_specs, file_path):
         model_performance[model_name_str] = accuracy
         print(f"{model_name_str} accuracy: {accuracy:.2f}% ({count}/{total_questions})")
 
-    best_model = max(model_performance, key=model_performance.get) # type: ignore
-    print(f"Best performing model: {best_model} with {model_performance[best_model]:.2f}% accuracy")
+    best_model = max(model_performance, key=model_performance.get)  # type: ignore
+    print(
+        f"Best performing model: {best_model} with {model_performance[best_model]:.2f}% accuracy"
+    )
+
 
 model_specs = [
     # (openai_model, "gpt-3.5-turbo"),
@@ -117,7 +128,12 @@ model_specs = [
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data-dir", type=str, help="Path to GAIA data directory", default="../GAIA/2023/validation")
+    parser.add_argument(
+        "--data-dir",
+        type=str,
+        help="Path to GAIA data directory",
+        default="../GAIA/2023/validation",
+    )
     args = parser.parse_args()
 
     file_path = f"{args.data_dir}/metadata.jsonl"
