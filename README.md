@@ -76,3 +76,7 @@ We welcome contributions from the community! If you'd like to contribute to Mach
 ## License
 
 Machitare is released under the [MIT License](LICENSE).
+
+## Project Name's Origin
+
+Machitare created by merging the latin words for machine "machina" and to think "cogitare"
