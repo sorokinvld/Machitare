@@ -12,10 +12,8 @@ repository = "https://github.com/Swiftyos/Machitare"
 python = "^3.12"
 openai = "^1.14.3"
 anthropic = "^0.21.3"
-protobuf = "^5.26.1"
-simpleaudio = "^1.0.4"
-pyaudio = "^0.2.14"
 click = "^8.1.7"
+pydantic = "^2.6.4"
 
 
 [tool.poetry.group.dev.dependencies]

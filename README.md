@@ -2,7 +2,12 @@
     <img src="./docs/logo.jpeg" alt="Logo" width="300">
 </p>
 
-# Machitare: The Next Generation Agent Creation Framework
+<p align="center">
+"Simplicity is the ultimate sophistication." - Leonardo da Vinci
+</p>
+
+
+# Machitare
 
 Machitare is an innovative agent creation framework designed to revolutionize the way agents are built and deployed. With a focus on multi-model support, real-time streaming capabilities, multi-agent architecture, and multi-processor optimization, Machitare aims to provide a powerful and flexible platform for creating intelligent agents.
 
