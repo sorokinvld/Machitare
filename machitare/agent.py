@@ -37,6 +37,8 @@ class Agent:
     # Keep track of the agents own reports
     my_reports: list[str]
 
+    # TODO: Currently there is no way for parents to pass information down to children
+    
     # Suation summary of the agent
     current_state: str
 
